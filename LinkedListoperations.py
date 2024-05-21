@@ -11,6 +11,24 @@ def insertattail(head,ele):
         curr=curr.next
     curr.next=temp
     return head
+def insertatbeginning(head,ele):
+    temp=Box(ele)
+    if head== None:
+        return temp
+    temp.next =head
+    return temp
+def insertatspecific(head,pos,ele):
+    if pos==0:
+        insertatbeginning(head,ele)
+    temp=Box(ele)
+    currindex=0
+    currnode=head
+    while currindex!=pos-1:
+        currindex+=1
+        currnode=currnode.next 
+    temp.next=currnode.next
+    currnode.next = temp
+    return head
 def printing(head):
     curr=head
     while curr!=None:
@@ -60,4 +78,8 @@ head=deletingatbeginning(head)
 printing(head)
 pos=3
 deletingatspecific(head,pos)
+printing(head)
+insertattail(head,4)
+head=insertatbeginning(head,1)
+insertatspecific(head,3,3)
 printing(head)
